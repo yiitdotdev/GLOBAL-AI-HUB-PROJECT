@@ -1,3 +1,8 @@
+import csv
+import datetime
+
+
+
 #SUPERCLASS
 
 class pizza:
@@ -154,7 +159,7 @@ while True:
         print("Geçersiz kod. Tekrar deneyin.")
         continue
 
-    # Pizzaya sos ekleme işlemi - input
+    # Pizzaya sos ekleme işlemi - input-birden fazla ekleme özelliği
     while True:
         topping_choice = input(f" Seçtin:  {new_pizza.get_name()}. \n Sos eklemek ister misin? (y/n): ")
         if topping_choice.lower() == 'y':
@@ -192,3 +197,36 @@ for pizza in pizzas:
 
 # fiş yazdırma
 order.print_receipt()
+
+# Customer class
+
+class Customer:
+    def __init__(self, name, address, id_num, credit_card, card_pw):
+        self.name = name
+        self.address = address
+        self.id_num = id_num
+        self.credit_card = credit_card
+        self.card_pw = card_pw
+
+
+
+# Database yazılacak inputlar
+print("Siparişinizi tamamlamak için lüften bilgileri eksiksiz giriniz!\n")
+name = input("Lütfen isminizi giriniz: ")
+address = input("Lütfen adres bilgilerinizi giriniz: ")
+id_num = input("Lütfen kimlik numaranızı giriniz: ") 
+credit_card = input("Lütfen kredi kartı numaranızı giriniz: ")
+card_pw = input("Lütfen kart şifrenizi giriniz: ")
+ordertime = datetime.datetime.now().replace(second=0,microsecond=0)
+
+customer=Customer(name,address,id_num,credit_card,card_pw)
+customer_list=[customer]
+
+# Database yazma işlemi
+with open('orderinfo.csv', 'a', newline='') as info:
+    writer = csv.writer(info)
+    writer.writerow([ordertime])
+    for Customer in customer_list:
+        writer.writerow([customer.name, customer.address, customer.id_num, customer.credit_card, customer.card_pw])
+    for pizza in pizzas:
+        writer.writerow([pizza.get_codeid(), pizza.get_name(), pizza.get_cost()])
