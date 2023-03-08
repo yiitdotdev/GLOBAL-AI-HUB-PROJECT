@@ -29,19 +29,19 @@ class pizza:
 
 class klasik(pizza):
     def __init__(self):
-        super().__init__(codeid="A1",name="Klasik pizza",description="KLASİK DESC",cost=12.00)
+        super().__init__(codeid="A1",name="Klasik pizza",description="İÇİNDEKİLER: SUCUK,SALAM,BİBER,KAŞAR",cost=75.00)
 
 class margarita(pizza):
     def __init__(self):
-        super().__init__(codeid="A2",name="Margarita",description="MARGARİTA DESC",cost=15.00)
+        super().__init__(codeid="A2",name="Margarita",description="İÇİNDEKİLER: MOZARELLA, DOMATES,FESLEĞEN,  ",cost=80.00)
 
 class turkishpizza(pizza):
     def __init__(self):
-        super().__init__(codeid="A3",name="Türk pizza",description="TÜRK PİZZA DESC",cost=16.00)
+        super().__init__(codeid="A3",name="Turk pizza",description="İÇİNDEKİLER: KIYMA,SOĞAN,SARIMSAK,KAŞAR",cost=85.00)
 
 class sade(pizza):
     def __init__(self):
-        super().__init__(codeid="A4",name="Sade",description="SADE PİZZA DESC",cost=12.00)
+        super().__init__(codeid="A4",name="Sade Pizza",description="İÇİNDEKİLER: SALAM, SUCUK ",cost=70.00)
 
 
 #DECORATOR SUPERCLASS
@@ -70,48 +70,48 @@ class Zeytin(ToppingDecorator):
         super().__init__(pizza)
         self.codeid="X1"
         self.name= "Zeytin"
-        self.description = "ZEYTİN DESC"
-        self.cost = 2.00
+        self.description = "EKSTRA ZEYTİN"
+        self.cost = 6.00
 
 class Mantar(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X2"
         self.name= "Mantar"
-        self.description = "MANTAR DESC"
-        self.cost = 1.00
+        self.description = "EKSTRA MANTAR"
+        self.cost = 8.00
 
 class Kecipeyniri(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X3"
         self.name= "Keçi Peyniri"
-        self.description = "PEYNİR DESC"
-        self.cost = 2.00
+        self.description = "EKSTRA PEYNİR "
+        self.cost = 10.00
 
 class Et(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X4"
         self.name= "Et"
-        self.description = "ET DESC"
-        self.cost = 2.00
+        self.description = "EKSTRA ET"
+        self.cost = 13.00
 
 class Sogan(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X5"
         self.name= "Soğan"
-        self.description = "SOĞAN DESC"
-        self.cost = 2.00
+        self.description = "EKSTRA SOĞAN"
+        self.cost = 4.00
 
 class Misir(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X6"
         self.name= "Mısır"
-        self.description = "MISIR DESC"
-        self.cost = 2.00
+        self.description = "EKSTRA MISIR"
+        self.cost = 5.00
 
 # Order Class
 class PizzaOrder:
@@ -142,6 +142,9 @@ class PizzaOrder:
 # pizzaları listelemek için boş liste oluşturuyoruz.
 pizzas = []
 
+# MENU YAZDIRMA 
+with open("menu.txt","r") as menu:
+    print(menu.read())
 # Kullanıcıdan değer alma işlemi
 while True:
     choice = input("Pizza Kodunu giriniz!(a1-a4) (Sepete gitmek için: 'done'): ")
