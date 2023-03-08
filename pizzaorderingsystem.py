@@ -85,7 +85,7 @@ class Kecipeyniri(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X3"
-        self.name= "Keçi Peyniri"
+        self.name= "Keci Peyniri"
         self.description = "EKSTRA PEYNİR "
         self.cost = 10.00
 
@@ -101,15 +101,15 @@ class Sogan(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X5"
-        self.name= "Soğan"
-        self.description = "EKSTRA SOĞAN"
+        self.name= "Sogan"
+        self.description = "EKSTRA SOGAN"
         self.cost = 4.00
 
 class Misir(ToppingDecorator):
     def __init__(self, pizza):
         super().__init__(pizza)
         self.codeid="X6"
-        self.name= "Mısır"
+        self.name= "Misir"
         self.description = "EKSTRA MISIR"
         self.cost = 5.00
 
@@ -217,9 +217,9 @@ class Customer:
 print("Siparişinizi tamamlamak için lüften bilgileri eksiksiz giriniz!\n")
 name = input("Lütfen isminizi giriniz: ")
 address = input("Lütfen adres bilgilerinizi giriniz: ")
-id_num = input("Lütfen kimlik numaranızı giriniz: ") 
-credit_card = input("Lütfen kredi kartı numaranızı giriniz: ")
-card_pw = input("Lütfen kart şifrenizi giriniz: ")
+id_num = int(input("Lütfen kimlik numaranızı giriniz: "))
+credit_card = int(input("Lütfen kredi kartı numaranızı giriniz: "))
+card_pw = int(input("Lütfen kart şifrenizi giriniz: "))
 ordertime = datetime.datetime.now().replace(second=0,microsecond=0)
 
 customer=Customer(name,address,id_num,credit_card,card_pw)
