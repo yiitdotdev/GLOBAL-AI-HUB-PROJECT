@@ -1,0 +1,16 @@
+
+PIZZACIM MENU
+
+Pizza Tabani 
+A1: Klasik 
+A2: Margarita
+A3: Turk Pizza
+A4: Sade Pizza
+
+Ekstra Malzemeler
+X1: Zeytin
+X2: Mantar
+X3: Peynir
+X4: Et
+X5: Sogan
+X6: Misir
