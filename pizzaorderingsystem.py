@@ -211,20 +211,29 @@ class Customer:
         self.credit_card = credit_card
         self.card_pw = card_pw
 
+    # KULLANICIDAN DEĞER AL VE DEĞİŞTİRMESİNE İZİN VER.
+    def getcustomerinfo():
+        while True:
+            name = input("Lütfen isminizi giriniz: ")
+            address = input("Lütfen adres bilgilerinizi giriniz: ")
+            id_num = int(input("Lütfen kimlik numaranızı giriniz: "))
+            credit_card = int(input("Lütfen kredi kartı numaranızı giriniz: "))
+            card_pw = int(input("Lütfen kart şifrenizi giriniz: "))
+
+        # Bilgilerin doğru olup olmadığını sor.
+            print(f"İsim: {name}\nAdres: {address}\nKimlik NO: {id_num}\nKredi Kart NO: {credit_card}\nKart Şifresi: {card_pw}")
+            correct = input("\nYukarıdaki bilgiler doğru mu? (y/n): ")
+
+        # Bilgiler doğruysa işle.
+            if correct.lower() == 'y':
+                print("Ödemeniz Başarıyla alındı!")
+                return Customer(name, address, id_num, credit_card, card_pw)
 
 
-# Database yazılacak inputlar
-print("Siparişinizi tamamlamak için lüften bilgileri eksiksiz giriniz!\n")
-name = input("Lütfen isminizi giriniz: ")
-address = input("Lütfen adres bilgilerinizi giriniz: ")
-id_num = int(input("Lütfen kimlik numaranızı giriniz: "))
-credit_card = int(input("Lütfen kredi kartı numaranızı giriniz: "))
-card_pw = int(input("Lütfen kart şifrenizi giriniz: "))
-ordertime = datetime.datetime.now().replace(second=0,microsecond=0)
-
-customer=Customer(name,address,id_num,credit_card,card_pw)
+customer= Customer.getcustomerinfo()
 customer_list=[customer]
 
+ordertime = datetime.datetime.now().replace(second=0,microsecond=0)
 # Database yazma işlemi
 with open('orderinfo.csv', 'a', newline='') as info:
     writer = csv.writer(info)
