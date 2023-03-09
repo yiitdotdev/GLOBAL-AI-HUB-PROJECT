@@ -33,7 +33,7 @@ class klasik(pizza):
 
 class margarita(pizza):
     def __init__(self):
-        super().__init__(codeid="A2",name="Margarita",description="İÇİNDEKİLER: MOZARELLA, DOMATES,FESLEĞEN,  ",cost=80.00)
+        super().__init__(codeid="A2",name="Margarita",description="İÇİNDEKİLER: MOZARELLA, DOMATES,FESLEĞEN",cost=80.00)
 
 class turkishpizza(pizza):
     def __init__(self):
@@ -142,12 +142,18 @@ class PizzaOrder:
 # pizzaları listelemek için boş liste oluşturuyoruz.
 pizzas = []
 
+
 # MENU YAZDIRMA 
+print("---------------------------------------------------------------------")
+print("PizzaWorld'e Hoşgeldiniz! Bizi tercih ettiğiniz için teşekkür ederiz.")
+print("---------------------------------------------------------------------")
+
 with open("menu.txt","r") as menu:
     print(menu.read())
 # Kullanıcıdan değer alma işlemi
+
 while True:
-    choice = input("Pizza Kodunu giriniz!(a1-a4) (Sepete gitmek için: 'done'): ")
+    choice = input("Lütfen almak istediğiniz pizzanın kodunu giriniz! (a1-a4) (Sepete gitmek için: 'done'): ")
     if choice.lower() == 'done':
         break
     elif choice.lower() == 'a1':
@@ -159,14 +165,14 @@ while True:
     elif choice.lower() == 'a4':
         new_pizza = sade()
     else:
-        print("Geçersiz kod. Tekrar deneyin.")
+        print("Geçersiz kod girdiniz. Lütfen tekrar deneyiniz!")
         continue
 
     # Pizzaya sos ekleme işlemi - input-birden fazla ekleme özelliği
     while True:
-        topping_choice = input(f" Seçtin:  {new_pizza.get_name()}. \n Sos eklemek ister misin? (y/n): ")
+        topping_choice = input(f" Pizza Seçimiz:  {new_pizza.get_name()}. \n Ekstra Malzeme eklemek ister misiniz? (y/n): ")
         if topping_choice.lower() == 'y':
-            topping_code = input("Sos Kodu giriniz (x1 - x6): ")
+            topping_code = input("Lütfen eklemek istediğiniz malzemenin kodunu giriniz! (x1 - x6): ")
             if topping_code.lower() == 'x1':
                 new_pizza = Zeytin(new_pizza)
             elif topping_code.lower() == 'x2':
@@ -180,19 +186,19 @@ while True:
             elif topping_code.lower() == 'x6':
                 new_pizza = Misir(new_pizza)
             else:
-                print("Geçersiz kod. Tekrar deneyin")
+                print("Geçersiz kod girdiniz. Lütfen tekrar deneyiniz!")
                 continue
         elif topping_choice.lower() == 'n':
             break
         else:
-            print("Geçersiz kod. Evet için 'y', Hayır için 'n'.")
+            print("Geçersiz kod girdiniz. Sos eklemek istiyorsanız 'y' kodunu, sos eklemek istemiyorsanız 'n' kodunu giriniz.")
             continue
 
     # oluşturulan pizzayı listeye ekleme
     pizzas.append(new_pizza)
 
     # onay mesajı
-    print(f"{new_pizza.get_name()} Sepete eklendi.")
+    print(f"{new_pizza.get_name()} Siparişiniz sepete eklendi.")
 
 order = PizzaOrder()
 for pizza in pizzas:
@@ -222,7 +228,7 @@ class Customer:
 
         # Bilgilerin doğru olup olmadığını sor.
             print(f"İsim: {name}\nAdres: {address}\nKimlik NO: {id_num}\nKredi Kart NO: {credit_card}\nKart Şifresi: {card_pw}")
-            correct = input("\nYukarıdaki bilgiler doğru mu? (y/n): ")
+            correct = input("\n\nYukarıdaki bilgiler doğru mu? (y/n): ")
 
         # Bilgiler doğruysa işle.
             if correct.lower() == 'y':
